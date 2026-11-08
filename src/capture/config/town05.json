@@ -1,0 +1,34 @@
+{
+  "map_name": "Town05_Opt",
+  "carla_version": "0.9.16",
+  "model_z_range_m": [
+    -2.0,
+    2.0
+  ],
+  "max_connector_height_difference_m": 0.4,
+  "capture_height_m": 60.0,
+  "capture_size": [
+    1152,
+    2048
+  ],
+  "capture_fov_deg": 36.0,
+  "safe_border_px": 48,
+  "remove_layers": [
+    "Foliage",
+    "StreetLights",
+    "ParkedVehicles",
+    "Particles",
+    "Props",
+    "Buildings",
+    "Walls"
+  ],
+  "keep_layers": [
+    "Ground",
+    "Decals"
+  ],
+  "selective_objects": [],
+  "status": "cpu_adaptation_only_not_render_validated",
+  "gpu_stop_MB_decimal": 7400,
+  "gpu_max_fraction": 0.9,
+  "texture_streaming_pool_mib": 2048
+}

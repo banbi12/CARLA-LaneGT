@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="930" viewBox="0 0 1160 930">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#78c7fa"/></marker></defs>
+<rect width="1160" height="930" fill="#101820"/>
+<text x="35" y="42" fill="#edf5fb" font-family="sans-serif" font-size="25" font-weight="bold">CARLA LaneGT MultiTown - semantic V4.5 R3</text>
+<rect x="30" y="80" width="530" height="130" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="50" y="114" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">Matching XODR + complete frame pose</text>
+<text x="50" y="146" fill="#e4edf3" font-family="sans-serif" font-size="18">Road-local XYZ; lane sections; exact map hash</text>
+<text x="50" y="173" fill="#e4edf3" font-family="sans-serif" font-size="18">Divider / boundary / crossing / directed centers</text>
+<rect x="600" y="80" width="530" height="130" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="620" y="114" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">Synchronized topdown evidence</text>
+<text x="620" y="146" fill="#e4edf3" font-family="sans-serif" font-size="18">RGB + semantic IDs + measured depth + calibration</text>
+<text x="620" y="173" fill="#e4edf3" font-family="sans-serif" font-size="18">Visible road layer and complete ROI coverage</text>
+<rect x="30" y="280" width="1100" height="140" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="50" y="314" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">V4.2 structure + semantic-supported boundary endpoint connections</text>
+<text x="50" y="346" fill="#e4edf3" font-family="sans-serif" font-size="18">Divider: frozen V4.2, no semantic supplements</text>
+<text x="50" y="373" fill="#e4edf3" font-family="sans-serif" font-size="18">Boundary: preserve structural anchors; no standalone semantic contours</text>
+<text x="50" y="400" fill="#e4edf3" font-family="sans-serif" font-size="18">Preserve native source geometry and explicit provenance</text>
+<rect x="30" y="480" width="1100" height="130" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="50" y="514" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">R3 target organization, before sampling</text>
+<text x="50" y="546" fill="#e4edf3" font-family="sans-serif" font-size="18">Same-class XYZ duplicates / containment, then unique coincident endpoints</text>
+<text x="50" y="573" fill="#e4edf3" font-family="sans-serif" font-size="18">Keep genuine forks, road layers, centerline direction and boundary partitions</text>
+<rect x="30" y="670" width="530" height="110" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="50" y="704" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">Full generic geometry (default)</text>
+<text x="50" y="736" fill="#e4edf3" font-family="sans-serif" font-size="18">Complete XY / XYZ + IDs + source provenance</text>
+<text x="50" y="763" fill="#e4edf3" font-family="sans-serif" font-size="18">CPU extraction; no model dependency</text>
+<rect x="600" y="670" width="530" height="110" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="620" y="704" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">Native MapTR sampling (optional)</text>
+<text x="620" y="736" fill="#e4edf3" font-family="sans-serif" font-size="18">fixed20 + shift_v2 + labels + target_ids</text>
+<text x="620" y="763" fill="#e4edf3" font-family="sans-serif" font-size="18">CPU adapter; full geometry remains available</text>
+<rect x="30" y="830" width="1100" height="75" rx="12" fill="#1b3040" stroke="#50758d"/>
+<text x="50" y="864" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">Offline review / tangent fillets / CAD round trips</text>
+<text x="50" y="896" fill="#e4edf3" font-family="sans-serif" font-size="18">Export operations; apply to a new GT revision; approval is separate</text>
+<path d="M285 210 L285 270" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M865 210 L865 270" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M580 420 L580 470" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M285 610 L285 660" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M865 610 L865 660" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M285 780 L285 820" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+<path d="M865 780 L865 820" stroke="#78c7fa" stroke-width="3" marker-end="url(#a)" fill="none"/>
+</svg>

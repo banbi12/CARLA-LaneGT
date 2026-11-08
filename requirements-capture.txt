@@ -1,0 +1,3 @@
+-r requirements.txt
+nvidia-ml-py>=11
+# Install the CARLA Python API matching your separately installed server.

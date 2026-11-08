@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Town05 同400帧：原版 / V4.1高程适配</title><link rel="stylesheet" href="comparison.css">
+<header><h1>Town05 · 原版 / V4.1高程适配 · 同400帧</h1><p id="summary"></p>
+<div class="controls"><label>筛选 <select id="filter"><option value="all">全部</option><option value="junction">路口</option><option value="slope">坡道</option><option value="elevated">高处</option><option value="improved">boundary孤立端点减少</option><option value="remaining">仍有boundary孤立端点</option><option value="worsened">boundary孤立端点增加</option><option value="divider">divider变化</option></select></label>
+<button id="prev">上一帧</button><select id="frame"></select><button id="next">下一帧</button>
+<label>视图 <select id="view"><option value="bev">完整几何BEV</option><option value="camera">六相机GT投影</option><option value="raw">六相机原图</option></select></label>
+<button id="focus">定位 scene-0683 frame 10</button></div><p id="details"></p><div id="counts"></div>
+<p>蓝：divider；黄：boundary；粉：ped_crossing；绿：centerline。旧boundary取curb外缘，V4.1取可行驶面外轮廓并排除窄路肩；该帧直路内移约1.135m。boundary位置变化与补齐转弯同时发生。相机投影未做遮挡消隐；几何覆盖率与孤立端点用于定位变化，不能替代图像审核。</p></header>
+<main><section><h2>原版：逐road候选外缘 <a id="oldLink">打开图册</a></h2><img id="oldImage" alt="原版同帧几何"></section><section><h2>V4.1：高程兼容可行驶面外轮廓 <a id="newLink">打开图册</a></h2><img id="newImage" alt="V4.1同帧几何"></section></main>
+<script src="data.js"></script><script src="comparison.js"></script></html>

@@ -1,0 +1,29 @@
+{
+  "release": "1.0.0",
+  "repository_name": "CARLA-LaneGT",
+  "algorithm": "semantic_v4_5_xodr_structure_semantic_connections",
+  "target_revision": "R3",
+  "upstream": {
+    "repository": "https://github.com/banbi12/CARLA_LaneGT",
+    "commit": "e45870a2e9c33fe1f5f78f1c7959195cc8e09500",
+    "software_release": "1.1.2"
+  },
+  "migration": "Section-aware MultiTown geometry with road elevation and directed target organization",
+  "training_approval_separate": true,
+  "public_scope": "source, policy, portable tests and selected documentation illustrations; datasets, maps, weights, local configuration and development outputs excluded",
+  "final_algorithm_source_files": {
+    "src/extraction/code/semgt/structural_boundary.py": "c3132f8d33f8fd291ae01745944ed53a0da524c293530f8c7eece8f97a9ba99b",
+    "src/extraction/code/semgt/divider_targets.py": "c5df00b05608f4b7afcc3920c1a46e375d5f941dbcaf8bef3b4d4a752c14a1a5",
+    "src/extraction/code/semgt/linear_targets.py": "16d3fac6e9a5e453708af1ca82beea40d4005d6ec446aed8cacdba3f412fa280",
+    "src/extraction/code/partition.py": "f0f701a7be2a87288fdccdc0dfd6835d949989725c5b0aeef865a3275008df5f",
+    "config/extraction/semantic_policy.json": "18d7cf4ac40fbc36aebde3679a9c086a1b70332e0169b6c8c6c095246778a953",
+    "config/extraction/linear_target_policy.json": "6e9f3d00ca7b8dad24ac3fe003e34d3f45ac61a5eec50e01414ae97500e81b1f",
+    "src/xodr_only/code/xodrgt/v42/support.py": "3499996cf0a370cc33add502de38f46251be585e9151f652c9e46b6e93e74d3a",
+    "src/xodr_only/code/xodrgt/v42/__init__.py": "41af4db7f04bf86ccf9c9e2cc1463f787fd2fc63dc4f526360055123a08cb778",
+    "src/xodr_only/code/xodrgt/v42/world.py": "73cab9f3dbde0e93a8f2c4af94fbfab98bdddbef60831906a2d2fb1502ca0d05",
+    "src/xodr_only/code/xodrgt/v42/xodr_topology.py": "3a8899293f0d8514d5dc9581917187c4b39b84f0e94474f295a122872ec82106",
+    "src/xodr_only/code/xodrgt/v42/stitch_dividers.py": "9ae77ca1c626230951faa4d9f64e031ec553ff109c9bf0f82aede195f9aab42a"
+  },
+  "cross_town_feasibility": "Tested across Town01-Town07 and Town10 in CARLA 0.9.16; generally feasible, with manual postprocessing for remaining gaps or incorrect lines",
+  "repository_url": "https://github.com/banbi12/CARLA-LaneGT"
+}

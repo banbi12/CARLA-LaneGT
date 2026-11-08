@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>semantic V4.4 · 同帧结构边界对照</title><link rel="stylesheet" href="style.css">
+<body><h1 id="pageTitle">Town03 / Town04 / Town06 · 同帧对照</h1><p id="summary"></p>
+<p id="sourceIntro">A：纯 XODR-only V4.2；B：修改前方案；C：本次方案。C 的 divider 完整采用 V4.2，boundary 保留 V4.2 结构，仅增加有 semantic / 深度证据的端点连接。橙色表示本次新增连接。未被 XODR 结构覆盖的边缘仍需人工处理。原结果均已保留。</p>
+<nav><select id="town"><option value="">全部地图</option><option>Town03</option><option>Town04</option><option>Town06</option></select><select id="filter"><option value="all">全部帧</option><option value="connected">新增 boundary 连接</option><option value="removed">移除了 divider 补线</option><option value="empty">旧 semantic boundary 为空</option><option value="junction">交叉口邻近</option><option value="slope">坡道 ≥2°</option><option value="occluded">无 semantic 可见道路层</option></select><input id="search" placeholder="场景 / 帧号 / token"><button id="prev">上一帧</button><select id="frames"></select><button id="next">下一帧</button></nav>
+<h2 id="title"></h2><p id="details"></p><div id="classes"></div>
+<div class="triple"><section><h3 id="mode0">A · 纯 XODR-only V4.2</h3><canvas id="a" width="660" height="1260"></canvas><a id="link0">打开图册</a><a id="camlink0" target="_blank"><img id="cam0"></a></section>
+<section><h3 id="mode1">B · 原 semantic V4.3</h3><canvas id="b" width="660" height="1260"></canvas><a id="link1">打开旧图册</a><a id="camlink1" target="_blank"><img id="cam1"></a></section>
+<section><h3 id="mode2">C · 本次 semantic V4.4</h3><canvas id="c" width="660" height="1260"></canvas><a id="link2">打开新图册及人工补线工作区</a><a id="camlink2" target="_blank"><img id="cam2"></a></section></div>
+<p><a id="topdown" target="_blank">本次顶视 GT</a> · <a id="raw" target="_blank">原始六相机</a> · <a href="comparison.json">逐帧检查与统计</a> · <a href="../REPORT.md">方案与局限</a></p>
+<p>内侧未配对端点按 XYZ 距离统计，并排除 ROI 裁剪边缘。它只用于描述几何变化，不能视为错误数或准确率。顶视被上层道路遮挡时仍显示地图基线，图像投影未做遮挡剔除。</p><script src="data.js"></script><script src="viewer.js"></script></body></html>

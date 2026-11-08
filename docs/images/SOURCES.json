@@ -1,0 +1,11 @@
+{
+  "description": "Selected documentation illustrations from CARLA 0.9.16 MultiTown rendering and the semantic V4.5 R3 offline gallery.",
+  "examples": [
+    "Town03",
+    "Town04",
+    "Town06"
+  ],
+  "browser_screenshots": "Target organization, tangent fillet preview and CAD editor.",
+  "diagrams": "Repository-native SVG technical diagrams.",
+  "scope": "Documentation illustrations only. No validation dataset, raw map, depth array or GT dataset is distributed."
+}

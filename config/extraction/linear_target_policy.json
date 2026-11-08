@@ -1,0 +1,5 @@
+{
+  "duplicate_tolerance_m": 0.00001,
+  "endpoint_tolerance_m": 0.00001,
+  "max_tangent_bend_deg": 15.0
+}

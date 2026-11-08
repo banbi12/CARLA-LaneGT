@@ -1,0 +1,7 @@
+{
+  "generator": "xodr_town05_elevation_v1",
+  "sha256": "d68e944b549cf358c188d6230a7d1f4e98dfade4c1a40bdfb403ac3d59efeadb",
+  "xodr_sha256": "7edc53b0be840e177598da7a4ed9571146d7b2595ce280d154c90f92e8a48851",
+  "features": 976,
+  "source": "Town05_native_roadmark_XYZ_not_Town10_V41"
+}

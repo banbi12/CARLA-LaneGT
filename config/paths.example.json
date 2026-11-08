@@ -1,0 +1,15 @@
+{
+  "map_profile": "/absolute/path/to/checkout/.local/maps/Town03_XODR_HASH/profile.json",
+  "capture_config": "/absolute/path/to/checkout/.local/maps/Town03_XODR_HASH/capture.json",
+  "frame_manifest": "/absolute/path/to/data/frames.json",
+  "topdown_root": "/absolute/path/to/data/topdown_cases",
+  "data_root": "/absolute/path/to/work",
+  "camera_metadata": null,
+  "camera_images": null,
+  "centerline_labels": null,
+  "carla_root": null,
+  "model_root": null,
+  "maptr_python": null,
+  "review60": "/absolute/path/to/work/review1",
+  "protected_output_roots": []
+}

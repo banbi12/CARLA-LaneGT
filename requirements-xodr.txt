@@ -1,0 +1,2 @@
+# V4.2 map preparation uses the same CPU geometry dependencies.
+-r requirements.txt

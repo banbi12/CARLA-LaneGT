@@ -1,0 +1,16 @@
+{
+  "map": "Town05",
+  "carla_version": "0.9.16",
+  "capture_map": "Town05_Opt",
+  "validated_maps": [],
+  "status": "CPU_adapted_pending_render_validation",
+  "files": {
+    "capture/server_Town05.xodr": "7edc53b0be840e177598da7a4ed9571146d7b2595ce280d154c90f92e8a48851",
+    "maps/town05_world.json": "2aed459433914d58dbf5e3ceebe7005a811ed9090d0449af0f9592801ed0757f",
+    "maps/town05_centerlines.json": "92313766f48d894e07753179d3d210eb3617d49615f7169fc31f487bfffca8ab",
+    "maps/xodr_crosswalk_world.json": "0d28485312b23572d919fce03540515ec88a6591a6f69068f3065279941dc260",
+    "maps/xodr_connection_prior_v41.json": "d68e944b549cf358c188d6230a7d1f4e98dfade4c1a40bdfb403ac3d59efeadb",
+    "maps/town05_world_v42.json": "c867498501ebf11e9e0de03e7283ccaaa35d4dc842266082254e180225805b4c",
+    "maps/town05_nonboundary_v42.json": "9c5f9e11bef84118398836ce941fba563c9c50ffece0df20dc41947ed883ed5f"
+  }
+}
