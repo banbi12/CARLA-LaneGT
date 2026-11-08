@@ -4,8 +4,8 @@
   "target_revision": "R3",
   "files": {
     ".gitignore": {
-      "sha256": "e50d1f6f1cbe0e57dab982a9ad048c18afe6cd3010695b9aecb9fb2412ee5bca",
-      "size": 2433
+      "sha256": "5ee04772a8d10054e6284880a0b0104b4fc4934d2fd83ce8a4746b5686652d20",
+      "size": 2421
     },
     "CHANGELOG.md": {
       "sha256": "2b787437983f6135a1ee51e1d898c44d86d8b68752cc6af043ae61c07621a080",
@@ -32,12 +32,12 @@
       "size": 714
     },
     "README-EN.md": {
-      "sha256": "039a65855225fbbac136bbbaf9308d28800f582df5127ba35e8f7b4b56a22211",
-      "size": 4402
+      "sha256": "434099593982232d52a7a94966c538f6e4b91316c998b16b8e6cc1f848f00de6",
+      "size": 4505
     },
     "README.md": {
-      "sha256": "6756932e29f180cdf4324b6d63754305c37b12a4a404ade7ad00eb7948ae6fed",
-      "size": 6625
+      "sha256": "cf7a5d53a7d0222852eb201d9c8d8d3970bb61fd1fa9b904e44dedb194bcdfb5",
+      "size": 6589
     },
     "RELEASE_SOURCE.json": {
       "sha256": "648ffe612b5c9751daa9627dad77ba4c99a6f5a0de5dc7cc2290edbcefb9d7dd",
@@ -60,8 +60,8 @@
       "size": 0
     },
     "config/ACTIVE_SCHEME.json": {
-      "sha256": "8202fda7679c790c0aadfe24c200d834d77d405966736ec29787068f3df2cbb2",
-      "size": 1685
+      "sha256": "a9e834bab13ddab2a97e3450c4738fae359dbc972239d07d5cdab1a18c6243dd",
+      "size": 1652
     },
     "config/capture/DefaultEngine.source.ini": {
       "sha256": "19d161b80ca5941c4bdfe5ba509b2c741b1855f719232cfbdf8dc229f72182e6",
@@ -108,16 +108,16 @@
       "size": 570
     },
     "config/release.json": {
-      "sha256": "db56cb63147490f426fc0a9bfadc762774f5ffb161534dd4a3b7e803f385f448",
-      "size": 2550
+      "sha256": "b88e7d66d5568eecddaafec6c1287d2e11c153a93427b9f25adfecc40779b102",
+      "size": 2540
     },
     "config/resources.town05.json": {
       "sha256": "19a4539d78c81d4d2780b10603bcdfaa55ecfd89190a7ca0bc66af2f001b9620",
       "size": 906
     },
     "docs/ADOPTED_SCHEME.md": {
-      "sha256": "73f305137a96c2c9caec3bf1c485fa30f40b9d57a51a0244825c5d0832359e2a",
-      "size": 632
+      "sha256": "56ef907e1a84350502099caa85330c71a1ae9b4a6fb8756ffbb90aee5b489530",
+      "size": 663
     },
     "docs/ALGORITHM.md": {
       "sha256": "75e704d4e44ecd80362a2819fa18493ce474d5e08e511599b24435652da65a3b",
@@ -180,8 +180,8 @@
       "size": 1768
     },
     "docs/SEMANTIC_V45.md": {
-      "sha256": "d064dc9a4d64b5d4b32ad35b7ca44905a78e4e4c4841c57edf1b70d37b562eae",
-      "size": 1361
+      "sha256": "132a81f86fbc3871d8a61f3ca53581ac8bca75ff06ef9707a7ead378b3eddb4a",
+      "size": 1195
     },
     "docs/TOPDOWN_INPUT.md": {
       "sha256": "22bed640f593793f445807285dcc1a215f6632a452ec78d3d1b7407e758e92ed",
@@ -196,8 +196,8 @@
       "size": 1173
     },
     "docs/images/SOURCES.json": {
-      "sha256": "f9bbe834f69d570783720ad7bbf04830f7af4ef4f22d807defc98ab03d37732e",
-      "size": 471
+      "sha256": "fa890a7b5db710df2b5568cecf0a9a74ed7d8e6c262bca8d30da65966aea4228",
+      "size": 592
     },
     "docs/images/cad-editor.png": {
       "sha256": "8db30afe8d795ff9a2d929792caa1d126eff1bfe5cbf1b085b370c82ce5bf2d8",
@@ -206,6 +206,10 @@
     "docs/images/coordinate-frames.svg": {
       "sha256": "a60e3b00148d11e17e2af0cbb754684c469d518b09fefec00d6d74602f303b25",
       "size": 2563
+    },
+    "docs/images/current-result.jpg": {
+      "sha256": "fa5610ef0edb3a99de5e981a7e16ee8d6b7e16cc33d17e6d019df9ba9aa0290e",
+      "size": 295000
     },
     "docs/images/fillet-editor.png": {
       "sha256": "0c09a1dddd782cb9088ae783af262e119b2d1362e4d195c272e3d6426f1ed92b",
@@ -216,20 +220,12 @@
       "size": 3868
     },
     "docs/images/multitown-overview.jpg": {
-      "sha256": "3790f7f19773a180e2456af5ec492868879f2368d2ba7a7131248e4baae62f60",
-      "size": 197007
+      "sha256": "14337af4a0828f6edcffac810f0fd1ff9a517bebf94bbdd70e42f37d973e6094",
+      "size": 244800
     },
     "docs/images/pipeline.svg": {
       "sha256": "dc17f755215778b476ceee1391717d9832a31e3ae8fd91a3631527b090e2728f",
       "size": 4654
-    },
-    "docs/images/target-boundary.png": {
-      "sha256": "772f6a668e5fa1198022fc58d29b901039a6ff2ebf251b63b1f4b368165a3be3",
-      "size": 135150
-    },
-    "docs/images/target-centerline.png": {
-      "sha256": "27e53ee9d3269597aabe3a450f449b73c36a7baf123f294644324eb0111babb0",
-      "size": 185281
     },
     "requirements-capture.txt": {
       "sha256": "136634d14d905581312b4d6df3138bb18907693a5ccb282187c39308407cbb4b",
@@ -749,18 +745,6 @@
     "web/structural_comparison/viewer.js": {
       "sha256": "0153b5f9e4ffb62775feb9d52fdbcc5e259b19dfed37db955338326dfd3f12c6",
       "size": 4889
-    },
-    "web/target_comparison/index.html": {
-      "sha256": "5a9f50d8b064d01f6ee465369dd58bb10ccac15f475c8fd416fe7c07c69107b4",
-      "size": 2321
-    },
-    "web/target_comparison/style.css": {
-      "sha256": "8c30e46e5af5e50c6e9738b6ee0808ff574935d79ca7c0252923f4f7fdaa7c3f",
-      "size": 656
-    },
-    "web/target_comparison/viewer.js": {
-      "sha256": "b57409b240c22c92fef7bf321fd2876176cdbd00aa39c086c5714a31619d4f9b",
-      "size": 5850
     },
     "web/xodr_comparison/comparison.css": {
       "sha256": "9283e3ff27fb187fb1ac24fb901050d6c414d139c888550282a7c3ec8287be88",

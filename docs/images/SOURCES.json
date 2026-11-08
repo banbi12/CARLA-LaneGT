@@ -5,7 +5,8 @@
     "Town04",
     "Town06"
   ],
-  "browser_screenshots": "Target organization, tangent fillet preview and CAD editor.",
+  "browser_screenshots": "Current-version tangent fillet preview and CAD editor.",
   "diagrams": "Repository-native SVG technical diagrams.",
-  "scope": "Documentation illustrations only. No validation dataset, raw map, depth array or GT dataset is distributed."
+  "scope": "Documentation illustrations only. No validation dataset, raw map, depth array or GT dataset is distributed.",
+  "result_figures": "Current semantic V4.5 R3 topdown overlays and complete BEV geometry; no historical-version comparison."
 }

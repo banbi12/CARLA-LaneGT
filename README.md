@@ -77,9 +77,9 @@ python run.py --paths config/paths.town03.local.json review \
 
 ## 审核与人工修订
 
-![Centerline targets and real forward sampling](docs/images/target-centerline.png)
+![当前版本的顶视 GT 与完整几何 BEV](docs/images/current-result.jpg)
 
-*同帧 target 整理前后对照，按实例着色并展示真实采样。较长曲线固定 20 点的表示偏差可能增加；可对照完整几何与采样图。*
+*当前版本的提取结果：顶视 GT 叠加和完整几何 BEV。颜色区分 divider、boundary、ped_crossing 和 centerline。*
 
 ![Two-line tangent fillet editor](docs/images/fillet-editor.png)
 

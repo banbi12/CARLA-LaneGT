@@ -1,19 +1,18 @@
-# semantic V4.5 与 R3 修订
+# semantic V4.5 R3
 
-V4.4.1 的结构 boundary 连接方案正式命名为 V4.5。R1 清理 divider 精确重复和重合端点；R2 加入完整包含片段检查，避免重叠片段制造假分叉；R3 将同类整理扩展至 boundary 和有向 centerline。
+当前版本以 XODR-only V4.2 为几何基线，结合 semantic 与实测深度连接结构 boundary 端点，并在采样前统一整理线实例。
 
-核心数值规则见[算法](ALGORITHM.md)和[参数](PARAMETERS.md)。本页只记录版本对应关系。
-
-| 名称 | 含义 |
+| 类别 | 当前处理 |
 | --- | --- |
-| XODR-only V4.2 | 保留原生道路局部 XYZ 的几何基线，带 divider 连接 |
-| semantic V4.5 | V4.2 divider 与结构 boundary；semantic 只支持 boundary 连接 |
-| R2 divider | XYZ 重复／完整包含清理与唯一重合端点链 |
-| R3 | 保留 R2 divider；boundary 与 centerline 加入同类整理、方向与切分保护 |
-| 软件 1.0.0 | 新 MultiTown 源码仓库的独立发布版本 |
+| divider | 原生 roadMark 与几何连接；不增加 semantic 补线 |
+| boundary | 保留结构候选及有观测证据的端点连接，保护有意切分 |
+| centerline | 同地图 XODR 车道中心线，保留行驶方向 |
+| ped_crossing | 同地图 XODR crosswalk 对象 |
 
-R3 在加入 centerline 后、模型采样前统一整理。原始 target 及其 source_refs、parent 和来源链保留。实例整理保持已有完整几何和 semantic 连接。
+线实例按同类完整 XYZ 检查重复和完整包含，再合并唯一且方向连续的重合端点。原始 target、source_refs、parent 和来源链可追溯；完整几何和已有连接保持。
 
-可选采样调用配置的外部 MapTRv2 `LiDARInstanceLines`。无模型时默认输出完整通用几何；显式采样时保存全部类别的 GT 20 点与 NPZ。
+实例整理位于 centerline 加入之后、模型采样之前。默认输出通用完整几何；可选采样调用配置的外部 MapTRv2 LiDARInstanceLines，并保存 GT 20 点与 NPZ。
 
 图册数据集身份包含版本和 GT 内容摘要。人工编辑记录只适用于对应版本的图册；重新提取或调整实例后，应在相应图册中继续编辑。
+
+数值规则见[算法](ALGORITHM.md)与[参数](PARAMETERS.md)，修订操作见[人工后处理](POSTPROCESSING.md)。

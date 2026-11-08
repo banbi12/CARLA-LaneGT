@@ -50,7 +50,9 @@ The default output is full generic geometry without model imports. Configure an 
 
 ## Review and editing
 
-![Directed centerline target consolidation](docs/images/target-centerline.png)
+![Current topdown GT and complete BEV geometry](docs/images/current-result.jpg)
+
+*Current-version output: topdown GT overlay and complete BEV geometry, colored by annotation class.*
 
 ![Tangent fillet editing](docs/images/fillet-editor.png)
 

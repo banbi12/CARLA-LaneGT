@@ -39,8 +39,7 @@
     "docs/images/input-layout.svg",
     "docs/images/coordinate-frames.svg",
     "docs/images/multitown-overview.jpg",
-    "docs/images/target-centerline.png",
-    "docs/images/target-boundary.png",
+    "docs/images/current-result.jpg",
     "docs/images/fillet-editor.png",
     "docs/images/cad-editor.png",
     "docs/images/SOURCES.json",
@@ -85,6 +84,7 @@
     "**/__pycache__/**",
     "**/*.pyc",
     "src/capture/config/runtime_paths.json",
-    "src/postprocessing/project.json"
+    "src/postprocessing/project.json",
+    "web/target_comparison/**"
   ]
 }
