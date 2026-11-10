@@ -73,7 +73,9 @@
     "tests/test_release_portability.py",
     "tests/fillet_bridge.cjs",
     "assets/maps/.gitkeep",
-    "assets/capture/.gitkeep"
+    "assets/capture/.gitkeep",
+    "docs/BOUNDARY_ALIGNMENT.md",
+    "tests/test_boundary_routes.py"
   ],
   "trees": [
     "src",

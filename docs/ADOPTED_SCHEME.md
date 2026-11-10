@@ -1,11 +1,11 @@
 # 默认提取方案
 
-MultiTown 默认使用 **semantic V4.5 R3**。软件版本为 1.0.0。
+MultiTown 默认使用 **semantic V4.5 R3 + XODR 外缘对齐 v2**。软件版本为 1.1.0。
 
 | 类别 | 来源与处理 |
 | --- | --- |
 | divider | XODR-only V4.2，关闭 semantic 补线；进行同类重复／包含片段及重合端点整理 |
-| boundary | V4.2 结构为主，semantic／depth 提供端点连接；R3 保留有意分段 |
+| boundary | 保留 V4.2 结构；semantic／depth 引导连接并按局部偏移对齐 XODR 外缘；Z 沿用原生端点和坡度；R3 保留有意分段 |
 | centerline | 同地图 XODR，使用有向 R3 target 整理 |
 | ped_crossing | 同地图 XODR crosswalk 对象 |
 

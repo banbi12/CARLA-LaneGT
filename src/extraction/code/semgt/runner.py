@@ -7,7 +7,7 @@ from .io import load,save,sha,fresh_output
 from .engine import assemble
 from .crosswalks import select
 from .sampling import actual_targets,diagnostics
-from . import VERSION
+from . import algorithm_version
 from .nonboundary_base import load_baseline,crosswalk_world
 
 def reference(row,paths,project,out,policy,old_world=None,reference_case=None,baseline=None,baseline_info=None,boundary_world=None):
@@ -35,7 +35,19 @@ def reference(row,paths,project,out,policy,old_world=None,reference_case=None,ba
     except ValueError as error:
         if 'No visible road in requested vertical ROI' not in str(error):raise
         visibility=dict(status='unavailable_overhead_occlusion',reason=str(error),pixels=0)
-    boundary_base=nearby_features(boundary_world['features'],row['transform'],row.get('BEV_range_m'))
+    boundary_roi=row.get('BEV_range_m')
+    if policy.get('boundary_route_enabled',False) and visibility['status']=='available':
+        # Connect in the complete measured reference, then clip annotations to
+        # the original BEV. An anchor just outside the BEV must not disappear.
+        points=meta['_world_xyz'][48:-48:16,48:-48:16]
+        valid=meta['_layer_mask'][48:-48:16,48:-48:16]
+        if valid.any():
+            transform=np.asarray(row['transform'])
+            local=points[valid]@transform[:3,:3].T+transform[:3,3]
+            a,b,c,d=boundary_roi
+            boundary_roi=[min(a,float(local[:,0].min()))-.5,min(b,float(local[:,1].min()))-.5,
+                          max(c,float(local[:,0].max()))+.5,max(d,float(local[:,1].max()))+.5]
+    boundary_base=nearby_features(boundary_world['features'],row['transform'],boundary_roi)
     if visibility['status']=='available':
         boundaries,boundary_audit=connect(boundary_base,boundary_world,meta,labels,policy)
     else:
@@ -45,7 +57,7 @@ def reference(row,paths,project,out,policy,old_world=None,reference_case=None,ba
     features=base+boundaries
     features+=select(crosswalk_world(baseline),row['transform'],meta,row.get('BEV_range_m'))
     boundary_gaps=boundary_audit['connections']
-    audit=dict(boundary_structure=boundary_audit,boundary_semantic_visibility=visibility,
+    audit=dict(boundary_structure=boundary_audit,boundary_semantic_visibility=visibility,boundary_context_roi_m=boundary_roi,
         boundary_small_gap_connections=boundary_gaps,boundary_smooth_gap_connections=boundary_gaps,
         small_gap_connections=boundary_gaps,rejected_connections=boundary_audit['rejected_connections'],
         double_yellow=[],raw_observations=[],nonboundary_baseline=baseline_info,
@@ -62,7 +74,7 @@ def reference(row,paths,project,out,policy,old_world=None,reference_case=None,ba
         Image.fromarray(np.zeros(labels.shape,np.uint8)).save(out/(name+'.png'))
     coverage=visibility;seams=[];skipped=[]
     save(out/'candidates.json',features);save(out/'audit.json',audit);save(out/'optional_map_hints.json',hints)
-    save(out/'reference_manifest.json',dict(reference=row['reference'],source=str(source),source_complete_sha256=sha(source/'COMPLETE.json'),version=VERSION,map_hints_affect_geometry=False,
+    save(out/'reference_manifest.json',dict(reference=row['reference'],source=str(source),source_complete_sha256=sha(source/'COMPLETE.json'),version=algorithm_version(policy),map_hints_affect_geometry=False,
         nonboundary_baseline=baseline_info,boundary_from_XODR=True,
         xodr_connection_constraints=dict(generator=baseline['generator'],baseline_version='XODR-only V4.2'),
         xodr_sha256=meta['xodr_sha256'],BEV_coverage=coverage_report,boundary_coverage=coverage,boundary_seams=seams,boundary_skipped=skipped))
@@ -101,7 +113,8 @@ def run(project,paths,rows,output,policy,old_world=None,use_sampler=False,center
     divider_policy=load(project/'config/divider_target_policy.json')
     linear_policy=load(project/'config/linear_target_policy.json')
     save(out/'boundary_world.json',boundary_world)
-    save(out/'manifest.json',dict(version=VERSION,scheme='semantic',nonboundary_baseline=baseline_info,
+    version=algorithm_version(policy)
+    save(out/'manifest.json',dict(version=version,scheme='semantic',nonboundary_baseline=baseline_info,
         boundary_from_XODR=True,boundary_generator=boundary_world['generator'],boundary_world_sha256=sha(out/'boundary_world.json'),frames=rows,policy=policy,divider_target_policy=divider_policy,linear_target_policy=linear_policy,target_revision='R3',BEV_range_m=bev_range,centerline_mode=centerline_mode,topdown_only=topdown_only,candidate_only=True,approved_for_training=False,GPU_used=False))
     center_world=None
     if centerline_mode=='generate':
@@ -136,7 +149,7 @@ def run(project,paths,rows,output,policy,old_world=None,use_sampler=False,center
             nonboundary_baseline=baseline_info,boundary_from_XODR=True,
             centerline_source='XODR-only V4.2 baseline' if centerline_mode=='generate' else centerline_mode,
             centerline_mode=centerline_mode,centerline_exact_from_source=centerline_mode=='provided' and bev_range==[-15.,-30.,15.,30.] and gt.get('centerline_exact_from_source',True))
-        gt['algorithm_version']=VERSION
+        gt['algorithm_version']=version
         gt['algorithm_accepted_by_user']=True
         gt['boundary_generator']=boundary_world['generator']
         save(frame/'gt.json.gz',gt)
@@ -144,9 +157,9 @@ def run(project,paths,rows,output,policy,old_world=None,use_sampler=False,center
         save(frame/'targets.json.gz',targets)
         save(frame/'sampling_diagnostics.json',sampling_report)
         save(frame/'input_binding.json',dict(token=row['token'],image_paths=row['image_paths'],native_metadata=str(Path(paths['native_metadata'])/(row['token']+'.json.gz')) if not topdown_only else None,reference=ref,
-            semantic_version=VERSION,nonboundary_baseline=baseline_info))
+            semantic_version=version,nonboundary_baseline=baseline_info))
         summary.append(dict(token=row['token'],counts=gt['counts'],capacity_passed=gt['capacity_passed'],actual_sampler_applied=gt['actual_sampler_applied']))
         if len(summary)%10==0 or len(summary)==len(rows):
-            print(__import__('json').dumps(dict(completed=len(summary),total=len(rows),version=VERSION)),flush=True)
-    save(out/'SUMMARY.json',dict(status='candidate_generated_pending_manual_review',version=VERSION,frames=summary,approved_for_training=False))
+            print(__import__('json').dumps(dict(completed=len(summary),total=len(rows),version=version)),flush=True)
+    save(out/'SUMMARY.json',dict(status='candidate_generated_pending_manual_review',version=version,frames=summary,approved_for_training=False))
     return out

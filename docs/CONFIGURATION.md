@@ -2,6 +2,8 @@
 
 每张地图必须使用自己的 `map_profile` 与本地 paths JSON，不从名称推断可以混用。JSON 内部路径使用绝对路径；不会展开 `~` 或 shell 变量。
 
+默认 `extract` 使用 `config/extraction/semantic_policy.json` 中的 XODR 外缘对齐连接；无需额外选择试验策略。可用 `--policy /data/custom-policy.json` 显式覆盖，输出版本身份随实际路径确定，详见 [boundary 对齐](BOUNDARY_ALIGNMENT.md)。
+
 ## 地图资源
 
 ```bash

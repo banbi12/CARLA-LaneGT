@@ -48,8 +48,9 @@ def boundary_context(xodr, features):
     return result
 
 
-def road_relations(path):
+def road_relations(path,include_outgoing=False):
     root = ET.parse(path).getroot()
+    road_nodes={int(r.get('id')):r for r in root.findall('road')}
     relations = set()
     for r in root.findall('road'):
         rid = int(r.get('id'))
@@ -60,6 +61,11 @@ def road_relations(path):
         roads = set()
         for c in j.findall('connection'):
             roads.update([int(c.get('incomingRoad')), int(c.get('connectingRoad'))])
+            if include_outgoing:
+                connecting=road_nodes.get(int(c.get('connectingRoad')))
+                if connecting is not None:
+                    for link in connecting.findall('link/*'):
+                        if link.get('elementType')=='road':roads.add(int(link.get('elementId')))
         for a in roads:
             for b in roads:
                 relations.add(tuple(sorted((a, b))))
@@ -83,6 +89,7 @@ def load_world(project, map_profile):
     return dict(schema='lanegt_structural_boundary_world_v1',generator=GENERATOR,
         map_name=profile['map_id'],xodr_sha256=world['xodr_sha256'],features=copy.deepcopy(features),
         source_world_sha256=pin['source_world_sha256'],road_relations=road_relations(xodr),
+        road_relations_expanded=road_relations(xodr,include_outgoing=True),
         boundary_context=boundary_context(xodr,features),
         audit=dict(features=len(features),exact_pinned_V42_boundary=True,base_geometry_unchanged=True,
             global_XY_union=False,semantic_images_used=False,
@@ -216,6 +223,13 @@ def merge_chains(base, selected):
 
 
 def connect(base, world, meta, labels, policy):
+    if policy.get('boundary_route_enabled',False):
+        from .boundary_routes import connect as route_connect
+        return route_connect(base,world,meta,labels,policy)
+    return connect_legacy(base,world,meta,labels,policy)
+
+
+def connect_legacy(base, world, meta, labels, policy):
     audit=dict(base_features=len(base), base_geometry_unchanged=True,
         standalone_semantic_boundaries=0, connections=[], rejected_connections=[])
     if not base or not policy['boundary_smooth_enabled']:

@@ -1,6 +1,6 @@
 # 源码分发
 
-项目软件版本为 1.0.0，默认提取方案为 semantic V4.5 R3。
+项目软件版本为 1.1.0，默认提取方案为 semantic V4.5 R3 + XODR 外缘对齐 v2。
 
 ## 文件范围
 
@@ -14,8 +14,8 @@
 
 ```bash
 python tools/check_release.py
-python tools/build_release.py --output .release/CARLA_LaneGT_MultiTown_v1-1.0.0
-python .release/CARLA_LaneGT_MultiTown_v1-1.0.0/tools/check_release.py \
+python tools/build_release.py --output .release/CARLA_LaneGT_MultiTown_v1-1.1.0
+python .release/CARLA_LaneGT_MultiTown_v1-1.1.0/tools/check_release.py \
   --verify-manifest --all-files
 ```
 

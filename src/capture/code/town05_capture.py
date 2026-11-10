@@ -15,7 +15,9 @@ R=Path(__file__).resolve().parents[1]
 
 def save(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
+    temporary=path.with_name(path.name+'.writing')
+    temporary.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
+    temporary.replace(path)
 
 
 

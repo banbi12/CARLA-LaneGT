@@ -39,6 +39,9 @@ def depth_world(uv, meta, depth=None):
 
 def bind(meta, labels, depth):
     """Attach in-memory arrays only; these private fields must not be serialized."""
+    meta.pop('_boundary_route_field',None)
+    meta.pop('_boundary_route_static_mask',None)
+    meta.pop('_boundary_alignment_edges',None)
     meta['_depth_m'] = depth
     yy, xx = np.indices(labels.shape)
     uv = np.c_[xx.ravel(), yy.ravel()]

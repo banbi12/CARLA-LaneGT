@@ -16,6 +16,11 @@ COL=dict(divider='#44baff',ped_crossing='#ff6ddc',boundary='#ffd34e',centerline=
 CAMS=['CAM_FRONT_LEFT','CAM_FRONT','CAM_FRONT_RIGHT','CAM_BACK_LEFT','CAM_BACK','CAM_BACK_RIGHT']
 NATIVE_FROM_MAP=np.array([[0,1,0,0],[-1,0,0,0],[0,0,1,0],[0,0,0,1]])
 
+def reference_rgb(folder):
+    """Use PNG captures or JPEG review backgrounds."""
+    folder=Path(folder)
+    return folder/'rgb.png' if (folder/'rgb.png').is_file() else folder/'rgb.jpg'
+
 def line_on_camera(dr,points,t,k,color):
     pp=transform(points,t)
     for a,b in zip(pp,pp[1:]):
@@ -92,7 +97,7 @@ def render(row):
         Image.fromarray(lut[ids]).save(out/'semantic_preview.png')
     else:
         preview=Image.new('RGB',(640,360),'#101820');ImageDraw.Draw(preview).text((20,20),'Semantic input not supplied (XODR-only)',fill='white');preview.save(out/'semantic_preview.png')
-    with Image.open(ref/'rgb.png') as source:rgb=source.convert('RGB')
+    with Image.open(reference_rgb(ref)) as source:rgb=source.convert('RGB')
     dr=ImageDraw.Draw(rgb);inv=np.linalg.inv(np.array(row['transform']));roundtrip=0.
     for f in targets:
         xyz=transform(f['full_xyz'],inv);uv=project(xyz,m);dr.line([tuple(q) for q in uv],fill=COL[f['class_name']],width=3)
@@ -102,7 +107,7 @@ def render(row):
     dr.line([tuple(q) for q in uv],fill='white',width=2);rgb.save(out/'topdown_gt.jpg',quality=92)
     for kind,name in ([('full','bev_gt.png'),('fixed','bev_fixed20.png'),('worst','bev_shift_v2_worst.png')] if has_sampler else [('full','bev_gt.png')]):bev(targets,kind,gt.get('BEV_range_m')).save(out/name)
     features=load(folder/'candidates.json');audit=load(folder/'audit.json')
-    with Image.open(ref/'rgb.png') as source:context=source.convert('RGB')
+    with Image.open(reference_rgb(ref)) as source:context=source.convert('RGB')
     dr=ImageDraw.Draw(context)
     for f in features:
         uv=project(f['points_xyz'],m);dr.line([tuple(q) for q in uv],fill=COL.get(f['class_name'],'#ff5252'),width=3)

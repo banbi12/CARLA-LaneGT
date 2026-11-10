@@ -1,6 +1,7 @@
 {
   "description": "Selected documentation illustrations from CARLA 0.9.16 MultiTown rendering and the semantic V4.5 R3 offline gallery.",
   "examples": [
+    "Town02",
     "Town03",
     "Town04",
     "Town06"
@@ -8,5 +9,5 @@
   "browser_screenshots": "Current-version tangent fillet preview and CAD editor.",
   "diagrams": "Repository-native SVG technical diagrams.",
   "scope": "Documentation illustrations only. No validation dataset, raw map, depth array or GT dataset is distributed.",
-  "result_figures": "Current semantic V4.5 R3 topdown overlays and complete BEV geometry; no historical-version comparison."
+  "result_figures": "XODR-aligned boundary v2 topdown overlay and complete BEV geometry from the same Town02 frame; MultiTown overview illustrates semantic V4.5 R3 class outputs. No historical-version comparison."
 }

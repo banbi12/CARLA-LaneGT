@@ -1,5 +1,15 @@
 """Metric rules; crosswalk-role guards apply to semantic extras, never baseline."""
 DEFAULT = dict(
+    boundary_route_enabled=True,boundary_route_search_max_gap_m=None,
+    boundary_route_align_to_xodr=True,
+    boundary_route_alignment_max_offset_m=1.,
+    boundary_route_alignment_max_height_bias_m=.4,
+    boundary_route_alignment_min_samples=4,
+    boundary_route_alignment_max_mad_m=.12,
+    boundary_route_sample_step_m=.15,boundary_route_fit_width_m=1.5,
+    boundary_route_max_interface_distance_m=1.25,boundary_route_max_curve_ratio=1.8,
+    boundary_route_occlusion_max_run_m=2.,
+    boundary_route_static_occluder_max_diagonal_m=4.,
     structural_boundary_max_gap_m=8.,structural_boundary_semantic_fraction=.8,
     structural_boundary_height_tolerance_m=.35,
     structural_boundary_straight_max_gap_m=30.,structural_boundary_straight_semantic_fraction=.95,
@@ -58,6 +68,19 @@ def checked(overrides=None):
         if unknown:
             raise ValueError('Unknown policy keys: '+str(sorted(unknown)))
         policy.update(overrides)
+    if not isinstance(policy['boundary_route_enabled'],bool):raise ValueError('Expected boolean boundary_route_enabled')
+    if not isinstance(policy['boundary_route_align_to_xodr'],bool):raise ValueError('Expected boolean boundary_route_align_to_xodr')
+    if not isinstance(policy['boundary_route_alignment_min_samples'],int) or not 3<=policy['boundary_route_alignment_min_samples']<=30:raise ValueError('Invalid boundary alignment sample count')
+    route_limit=policy['boundary_route_search_max_gap_m']
+    if route_limit is not None and (not isinstance(route_limit,(int,float)) or not 0<route_limit<10000):raise ValueError('Invalid optional boundary route search limit')
+    for key,lo,hi in [('boundary_route_sample_step_m',.05,.3),('boundary_route_fit_width_m',.2,3.),
+                      ('boundary_route_max_interface_distance_m',.2,3.),('boundary_route_max_curve_ratio',1.,2.5),
+                      ('boundary_route_occlusion_max_run_m',.1,3.),
+                      ('boundary_route_static_occluder_max_diagonal_m',.2,5.),
+                      ('boundary_route_alignment_max_offset_m',.05,1.5),
+                      ('boundary_route_alignment_max_height_bias_m',.01,.4),
+                      ('boundary_route_alignment_max_mad_m',.01,.2)]:
+        if not lo<=policy[key]<=hi:raise ValueError('Invalid '+key)
     if not 0 < policy['structural_boundary_max_gap_m'] <= 8.:raise ValueError('Invalid structural boundary gap')
     if not .8 <= policy['structural_boundary_semantic_fraction'] <= 1.:raise ValueError('Invalid structural boundary evidence fraction')
     if not .01 <= policy['structural_boundary_height_tolerance_m'] <= .4:raise ValueError('Invalid structural boundary height tolerance')

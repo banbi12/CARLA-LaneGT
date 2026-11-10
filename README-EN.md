@@ -4,18 +4,20 @@ English | [中文](README.md)
 
 A CARLA vector-map ground-truth toolkit with full XYZ geometry, offline multi-camera / BEV review, tangent fillet editing, CAD round trips, and optional native MapTRv2 sampling.
 
-**Software 1.0.0 · final method semantic V4.5 R3 · XODR-only V4.2 geometry baseline.** This is a new MultiTown repository derived from the earlier Town10 toolkit.
+**Software 1.1.0 · default method semantic V4.5 R3 + XODR-aligned boundary v2 · XODR-only V4.2 geometry baseline.** This is a new MultiTown repository derived from the earlier Town10 toolkit.
 
 ![Pipeline](docs/images/pipeline.svg)
 
 ## Method
 
 - **Divider:** native V4.2 road marks and geometry connections; semantic divider supplements are disabled.
-- **Boundary:** pinned V4.2 road-local structure. Semantic IDs and measured depth only support endpoint connections; standalone observed contours are not added.
+- **Boundary:** pinned V4.2 road-local structure. Semantic IDs and measured depth guide endpoint connections. Locally measured signed offsets transport the fitted guide back to the XODR outer edge; output Z follows native endpoint heights and grades. Standalone observed contours are not added.
 - **Pedestrian crossing:** matching XODR objects. An explicitly empty source remains empty.
 - **Centerline:** matching XODR lane centers, with directed point order preserved; optional generated or provided centers.
 
 Before sampling, same-class XYZ duplicates and fully contained subcurves are consolidated; unique coincident endpoints may form a continuous target. Real branches, different elevations, parallel lines, centerline direction and intentional boundary partitions remain separate. Full geometry and source provenance are retained.
+
+The aligned boundary method is enabled by default; no additional `--policy` is needed. Search is limited by the calibrated reference, XODR topology and measured evidence, rather than fixed 8m / 30m cutoffs. The lateral bias is estimated locally, with no global fixed shift. A consistent separation from the visible curb can remain under the XODR edge definition. See [boundary alignment](docs/BOUNDARY_ALIGNMENT.md).
 
 ## Cross-Town use
 
@@ -52,7 +54,7 @@ The default output is full generic geometry without model imports. Configure an 
 
 ![Current topdown GT and complete BEV geometry](docs/images/current-result.jpg)
 
-*Current-version output: topdown GT overlay and complete BEV geometry, colored by annotation class.*
+*XODR-aligned boundary v2 in Town02: topdown GT overlay and complete BEV geometry from the same frame, colored by annotation class.*
 
 ![Tangent fillet editing](docs/images/fillet-editor.png)
 

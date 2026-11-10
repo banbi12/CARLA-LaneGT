@@ -1,11 +1,11 @@
 # semantic V4.5 R3
 
-当前版本以 XODR-only V4.2 为几何基线，结合 semantic 与实测深度连接结构 boundary 端点，并在采样前统一整理线实例。
+当前版本以 XODR-only V4.2 为几何基线，结合 semantic 与实测深度拟合结构 boundary 端点连接，并按局部偏移与原生高程对齐 XODR 外缘，并在采样前统一整理线实例。
 
 | 类别 | 当前处理 |
 | --- | --- |
 | divider | 原生 roadMark 与几何连接；不增加 semantic 补线 |
-| boundary | 保留结构候选及有观测证据的端点连接，保护有意切分 |
+| boundary | 保留结构候选；局部法向偏移校正连接，原生端点高程／坡度主导 Z，保护有意切分 |
 | centerline | 同地图 XODR 车道中心线，保留行驶方向 |
 | ped_crossing | 同地图 XODR crosswalk 对象 |
 

@@ -99,5 +99,18 @@
   "structural_boundary_height_tolerance_m": 0.35,
   "structural_boundary_straight_max_gap_m": 30.0,
   "structural_boundary_straight_semantic_fraction": 0.95,
-  "structural_boundary_context_max_offset_m": 4.0
+  "structural_boundary_context_max_offset_m": 4.0,
+  "boundary_route_enabled": true,
+  "boundary_route_search_max_gap_m": null,
+  "boundary_route_sample_step_m": 0.15,
+  "boundary_route_fit_width_m": 1.5,
+  "boundary_route_max_interface_distance_m": 1.25,
+  "boundary_route_max_curve_ratio": 1.8,
+  "boundary_route_occlusion_max_run_m": 2.0,
+  "boundary_route_static_occluder_max_diagonal_m": 4.0,
+  "boundary_route_align_to_xodr": true,
+  "boundary_route_alignment_max_offset_m": 1.0,
+  "boundary_route_alignment_max_height_bias_m": 0.4,
+  "boundary_route_alignment_min_samples": 4,
+  "boundary_route_alignment_max_mad_m": 0.12
 }

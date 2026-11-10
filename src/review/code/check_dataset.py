@@ -39,7 +39,7 @@ def main():
             status='candidate_not_approved_for_training',sample_split=row['sample_split'],gt_sha256=sha(R/'frames'/row['token']/'gt.json.gz'))
         infos.append(info)
     index=R/'dataset/index/review60.pkl';index.parent.mkdir(parents=True,exist_ok=True)
-    with index.open('wb') as stream:pickle.dump(dict(infos=infos,metadata=dict(version='v1.0-test',classes=classes,annotation_sampling='full_geometry; real Dataset samples fixed20/shift_v2',approved_for_training=False)),stream,protocol=4)
+    with index.open('wb') as stream:pickle.dump(dict(infos=infos,metadata=dict(version=(rows[0].get('sample_split') if rows[0].get('sample_split') in ['v1.0-trainval','v1.0-test','v1.0-mini'] else 'v1.0-test'),classes=classes,annotation_sampling='full_geometry; real Dataset samples fixed20/shift_v2',approved_for_training=False)),stream,protocol=4)
     model=Path(paths['model_root']);sys.path[:0]=[str(model),str(model/'mmdetection3d'),str(REPO/'src/adapters')]
     import torch
     torch.set_num_threads(1)

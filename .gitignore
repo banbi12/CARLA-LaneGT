@@ -35,6 +35,7 @@
 !/tests/test_linear_targets.py
 !/tests/test_manual_fillet.py
 !/tests/test_release_portability.py
+!/tests/test_boundary_routes.py
 !/tests/fillet_bridge.cjs
 !/docs/
 /docs/*
@@ -47,6 +48,7 @@
 !/docs/OUTPUTS.md
 !/docs/ALGORITHM.md
 !/docs/SEMANTIC_V45.md
+!/docs/BOUNDARY_ALIGNMENT.md
 !/docs/ADOPTED_SCHEME.md
 !/docs/MULTITOWN.md
 !/docs/BEV.md

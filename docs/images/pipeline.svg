@@ -13,7 +13,7 @@
 <rect x="30" y="280" width="1100" height="140" rx="12" fill="#1b3040" stroke="#50758d"/>
 <text x="50" y="314" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">V4.2 structure + semantic-supported boundary endpoint connections</text>
 <text x="50" y="346" fill="#e4edf3" font-family="sans-serif" font-size="18">Divider: frozen V4.2, no semantic supplements</text>
-<text x="50" y="373" fill="#e4edf3" font-family="sans-serif" font-size="18">Boundary: preserve structural anchors; no standalone semantic contours</text>
+<text x="50" y="373" fill="#e4edf3" font-family="sans-serif" font-size="18">Boundary: semantic shape guide + local XODR offset; native endpoint grade</text>
 <text x="50" y="400" fill="#e4edf3" font-family="sans-serif" font-size="18">Preserve native source geometry and explicit provenance</text>
 <rect x="30" y="480" width="1100" height="130" rx="12" fill="#1b3040" stroke="#50758d"/>
 <text x="50" y="514" fill="#8bd1ff" font-family="sans-serif" font-size="21" font-weight="bold">R3 target organization, before sampling</text>

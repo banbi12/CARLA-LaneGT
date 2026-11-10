@@ -4,7 +4,7 @@
 
 从 CARLA 的匹配 XODR、顶视语义与实测深度生成道路矢量 GT，提供六相机投影、BEV 审核、页面圆角补线和 CAD 往返编辑。完整 XYZ 几何可独立使用；MapTRv2 的真实 `fixed20` / `shift_v2` 采样是可选适配。
 
-**软件版本 1.0.0；默认方案 semantic V4.5 R3；几何基线 XODR-only V4.2。** 这是从 Town10 单地图项目发展出的独立 MultiTown 源码仓库。四类为 `divider`、`boundary`、`ped_crossing` 和可选 `centerline`。
+**软件版本 1.1.0；默认方案 semantic V4.5 R3 + XODR 外缘对齐 v2；几何基线 XODR-only V4.2。** 这是从 Town10 单地图项目发展出的独立 MultiTown 源码仓库。四类为 `divider`、`boundary`、`ped_crossing` 和可选 `centerline`。
 
 ![V4.5 R3 pipeline](docs/images/pipeline.svg)
 
@@ -13,11 +13,13 @@
 | 类别 | 几何来源与处理 |
 | --- | --- |
 | divider | XODR-only V4.2 原生 roadMark 与连接；关闭 semantic 漏线补充 |
-| boundary | 保留 V4.2 road-local 结构，semantic / 实测 depth 仅提供结构端点连接证据；独立观测轮廓不加入 GT |
+| boundary | 保留 V4.2 road-local 结构；semantic / 实测 depth 拟合端点连接走势，再按局部偏移对齐 XODR 外缘，Z 沿用原生端点与坡度；不加入独立观测轮廓 |
 | ped_crossing | 同地图 XODR crosswalk 对象；源中没有对象时明确为空 |
 | centerline | 同地图 XODR 车道中心线，保留行驶方向；支持 none / generate / provided |
 
 采样前统一整理线实例：先检查同类 XYZ 重复及完整包含片段，再合并方向连续、关系唯一的重合端点。保留真实分叉、不同高度、平行线、centerline 方向及 boundary 有意切分。**保留原始几何和来源，不把固定点采样折线替代完整线。** 仍有错线与漏线需要人工修订。
+
+默认配置已启用新的 boundary 连接，无需额外 `--policy`。候选搜索受标定视野、XODR 拓扑和证据限制，不再使用固定 8m 转角／30m 直线搜索上限。局部偏移由两端观测估计，不做全地图固定平移；XODR 外缘与可见路沿仍可能存在稳定的定义差。细节见 [boundary 对齐](docs/BOUNDARY_ALIGNMENT.md)。
 
 ## 跨 Town 使用
 
@@ -79,7 +81,7 @@ python run.py --paths config/paths.town03.local.json review \
 
 ![当前版本的顶视 GT 与完整几何 BEV](docs/images/current-result.jpg)
 
-*当前版本的提取结果：顶视 GT 叠加和完整几何 BEV。颜色区分 divider、boundary、ped_crossing 和 centerline。*
+*XODR 外缘对齐 v2 在 Town02 的同一帧顶视 GT 叠加与完整几何 BEV，按类别着色。*
 
 ![Two-line tangent fillet editor](docs/images/fillet-editor.png)
 

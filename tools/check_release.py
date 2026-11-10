@@ -3,6 +3,8 @@
 from pathlib import Path
 import argparse,json,re,subprocess,sys
 from urllib.parse import unquote,urlsplit
+# Auditing a clean package must not create unlisted interpreter cache files.
+sys.dont_write_bytecode = True
 from release_files import collect,fingerprint
 
 

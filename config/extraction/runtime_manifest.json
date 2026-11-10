@@ -1,13 +1,14 @@
 {
-  "version": "semantic_v4_5_xodr_structure_semantic_connections",
-  "release": "1.0.0",
+  "version": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2",
+  "release": "1.1.0",
   "target_revision": "R3",
   "status": "stable",
   "approved_for_training": false,
   "map_identity_basis": "explicit per-map profile and exact live XODR fingerprint",
   "semantic_version": "V4.5",
   "xodr_baseline_version": "XODR-only V4.2",
-  "boundary_source": "pinned XODR structure with semantic-supported endpoint connections",
+  "boundary_source": "pinned XODR structure; semantic route fitting with local signed bias compensation and native endpoint height/grade",
   "targets": "same-class XYZ duplicate/containment cleanup and unique continuous endpoints; directed centerlines and intentional boundary cuts preserved",
-  "cross_town_feasibility": "Town01-Town07 and Town10 tested; remaining gaps or incorrect lines can be handled through manual postprocessing"
+  "cross_town_feasibility": "Town01-Town07 and Town10 tested; remaining gaps or incorrect lines can be handled through manual postprocessing",
+  "boundary_revision": "local_bias_compensated_xodr_boundary_route_v2"
 }
