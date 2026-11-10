@@ -4,7 +4,7 @@ English | [中文](README.md)
 
 A CARLA vector-map ground-truth toolkit with full XYZ geometry, offline multi-camera / BEV review, tangent fillet editing, CAD round trips, and optional native MapTRv2 sampling.
 
-**Software 1.1.0 · default method semantic V4.5 R3 + XODR-aligned boundary v2 · XODR-only V4.2 geometry baseline.** This is a new MultiTown repository derived from the earlier Town10 toolkit.
+**Software 1.1.1 · default method semantic V4.5 R3 + XODR-aligned boundary v2 · XODR-only V4.2 geometry baseline.** This is a new MultiTown repository derived from the earlier Town10 toolkit.
 
 ![Pipeline](docs/images/pipeline.svg)
 
@@ -15,7 +15,7 @@ A CARLA vector-map ground-truth toolkit with full XYZ geometry, offline multi-ca
 - **Pedestrian crossing:** matching XODR objects. An explicitly empty source remains empty.
 - **Centerline:** matching XODR lane centers, with directed point order preserved; optional generated or provided centers.
 
-Before sampling, same-class XYZ duplicates and fully contained subcurves are consolidated; unique coincident endpoints may form a continuous target. Real branches, different elevations, parallel lines, centerline direction and intentional boundary partitions remain separate. Full geometry and source provenance are retained.
+Before sampling, same-class XYZ duplicates and fully contained subcurves are consolidated; unique coincident endpoints may form a continuous target. Real branches, different elevations, parallel lines, centerline direction remain protected. Full geometry and source provenance are retained.
 
 The aligned boundary method is enabled by default; no additional `--policy` is needed. Search is limited by the calibrated reference, XODR topology and measured evidence, rather than fixed 8m / 30m cutoffs. The lateral bias is estimated locally, with no global fixed shift. A consistent separation from the visible curb can remain under the XODR edge definition. See [boundary alignment](docs/BOUNDARY_ALIGNMENT.md).
 
@@ -63,3 +63,5 @@ The offline gallery supports review, straight connections, tangent circular conn
 See the Chinese technical documentation for [inputs](docs/INPUTS.md), [configuration](docs/CONFIGURATION.md), [quick start](docs/QUICKSTART.md), [algorithm](docs/ALGORITHM.md), [sampling](docs/GENERIC_GT.md), [capture](docs/CAPTURE.md), [editing](docs/POSTPROCESSING.md), [known issues](KNOWN_ISSUES.md), and [release scope](docs/RELEASE.md).
 
 Project code is MIT licensed. CARLA, MapTRv2, maps and datasets retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md) and [source provenance](RELEASE_SOURCE.json).
+
+Boundary targets are no longer split at curvature transitions. Each connected portion of a boundary parent inside the ROI receives one 20-point target; full XYZ geometry is retained. This accepts greater representation error at tight turns, without bridging gaps, layers or branches.

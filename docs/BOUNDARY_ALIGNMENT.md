@@ -23,3 +23,5 @@ XODR `surface_outer_edge` 与可见 Roads / Sidewalks、Terrain 界面可能对�
 ## 使用边界
 
 不产生独立 semantic boundary，divider 仍完全来自 XODR-only V4.2，R3 实例整理与模型采样保持独立。紧转角、遮挡、缺少可靠锚点或 XODR 本身错分仍需人工审核；连通性和数据接口通过不代表每条曲线都准确。人工补线可使用[两线圆角及 CAD 后处理](POSTPROCESSING.md)。
+
+默认 boundary target 不再按曲率或急弯预切分：同一条连续 boundary 在 ROI 内的连续部分作为一个 target，统一采样 20 点。完整 XYZ 保留；真实不相接片段、跨层和分叉不因此强行连接。紧转角可能增加固定点采样的表示偏差。旧数据的显式分段保护仍仅用于已有分段输入，不影响新提取的此规则。

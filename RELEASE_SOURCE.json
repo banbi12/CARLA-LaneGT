@@ -1,7 +1,7 @@
 {
-  "release": "1.1.0",
+  "release": "1.1.1",
   "repository_name": "CARLA-LaneGT",
-  "algorithm": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2",
+  "algorithm": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2+boundary_single_target_v1",
   "target_revision": "R3",
   "upstream": {
     "repository": "https://github.com/banbi12/CARLA_LaneGT",
@@ -28,9 +28,11 @@
     "src/extraction/code/semgt/policy.py": "409e58c6a21fb6060c4ff4d9aa535781303ba4c96518010e59266f05e420354e",
     "src/extraction/code/semgt/runner.py": "46ef3a3d74eb8323beaf74b14c996141ed55ad77db2d7be136e7ffde6239a738",
     "src/extraction/code/semgt/surface.py": "1e34a1a7ac665465856009d2994dba8e477107de8b4755f360c422956b950151",
-    "src/extraction/code/semgt/__init__.py": "5c9ee0a36ea34de0e2cbd5ee41403d94239bdc8bb98d567711f5c64dbf0f433c"
+    "src/extraction/code/semgt/__init__.py": "d3fc9cad98e3874f01daef1b645cd283c305b8c3922009b5d2e32b9ac649f413",
+    "config/extraction/boundary_partition_policy.json": "3a212fbe3c2ded86d911cf4bcb430cac8b151367c78725a35c845349e6f3fe07"
   },
   "cross_town_feasibility": "Tested across Town01-Town07 and Town10 in CARLA 0.9.16; generally feasible, with manual postprocessing for remaining gaps or incorrect lines",
   "repository_url": "https://github.com/banbi12/CARLA-LaneGT",
-  "boundary_revision": "local_bias_compensated_xodr_boundary_route_v2"
+  "boundary_revision": "local_bias_compensated_xodr_boundary_route_v2",
+  "boundary_targets": "one target per connected boundary parent within ROI; no curvature-based partitions"
 }

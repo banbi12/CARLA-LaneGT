@@ -1,9 +1,9 @@
 {
   "name": "CARLA_LaneGT_MultiTown_v1",
-  "release": "1.1.0",
-  "algorithm": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2",
+  "release": "1.1.1",
+  "algorithm": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2+boundary_single_target_v1",
   "schemes": {
-    "default": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2",
+    "default": "semantic_v4_5_xodr_structure_semantic_connections+boundary_route_xodr_aligned_trial_v2+boundary_single_target_v1",
     "xodr_only": "XODR-only V4.2"
   },
   "scope": "Town01-Town07 and Town10 cross-Town feasibility tested; remaining line gaps and incorrect segments can be corrected manually",
@@ -17,5 +17,6 @@
   "approved_for_training": false,
   "target_revision": "R3",
   "status": "stable",
-  "repository": "https://github.com/banbi12/CARLA-LaneGT"
+  "repository": "https://github.com/banbi12/CARLA-LaneGT",
+  "boundary_targets": "one target per connected boundary parent within ROI; no curvature-based partitions"
 }

@@ -1,7 +1,7 @@
 {
   "version": "boundary_partition_trial_v1",
-  "name": "geometry",
-  "feature_split": true,
+  "name": "continuous_boundary",
+  "feature_split": false,
   "max_length_m": null,
   "sample_step_m": 0.25,
   "tangent_window_m": 2.0,
@@ -13,5 +13,5 @@
   "geometry_output": "original_polyline_substrings",
   "raw_source_unchanged": true,
   "approved_for_release": false,
-  "sha256": "a5363b17ab90de9c531a53c09bfd88923a74162f91dede84b6cc89bd4fce7e8a"
+  "sha256": "62e326576b18cfd7f61378f9a936f632f0122c4e8a36ed3c37cdff544c0ededd"
 }

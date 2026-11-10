@@ -62,6 +62,19 @@ class LinearTargetTests(unittest.TestCase):
         self.assertEqual(gt['counts']['centerline'],1);self.assertFalse(gt['centerline_exact_from_source'])
         self.assertEqual(len(gt['classes']['centerline'][0]['points']),20)
 
+    def test_default_boundary_keeps_a_turn_as_one_target(self):
+        from semgt.engine import assemble
+        from semgt.divider_targets import DEFAULT
+        import json
+        partition=json.loads((R/'config/extraction/boundary_partition_policy.json').read_text())
+        feature=dict(id='continuous',class_name='boundary',source={},
+                     points_xyz=[[-10,0,0],[0,0,0],[0,10,0]])
+        row=dict(token='test',reference='test',transform=np.eye(4).tolist())
+        gt,targets=assemble(row,[feature],[],partition,linear_target_policy=DEFAULT)
+        self.assertEqual(len(targets),1)
+        self.assertEqual(targets[0]['full_xyz'],feature['points_xyz'])
+        self.assertEqual(gt['counts']['boundary'],1)
+
     def test_shared_assembler_applies_new_rule_after_adding_centerlines(self):
         from semgt.engine import assemble
         from semgt.divider_targets import DEFAULT

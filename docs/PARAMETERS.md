@@ -30,7 +30,7 @@
 | endpoint_tolerance_m | 0.00001m；重合端点，不用于补正缺口 |
 | max_tangent_bend_deg | 15°；唯一端点连接的方向保护 |
 | centerline | 同向；只允许末端接起点，不反转曲线 |
-| boundary | 同原 parent 的有意分段不合回 |
+| boundary | 默认 `feature_split=false`，同一 parent 在 ROI 内的连续部分作为一个 target，统一采样 20 点；不按曲率预切分 |
 
 boundary 分段策略见 `boundary_partition_policy.json`。R3 位于实例裁剪、centerline 加入之后、实际采样之前。默认 BEV 为 [-15,-30,15,30]，高度 [-2,2]。采集模板为 1152×2048、FOV 36°、60m 相对高度；实际高度按完整 XYZ 覆盖与端点上下文调整，不以世界 z=0 投影。显存停止阈值为 7400MB 与物理显存 90% 中较小者，每 100ms 采样。
 
